@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Question Pattern Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Auto Question Pattern Generator</h1>
+      <p>Upload a PDF/Image or paste text, then choose your question mix.</p>
+    </header>
+
+    <section class="card">
+      <h2>1) Provide source content</h2>
+      <label class="input-label" for="sourceFile">Upload file (PDF, PNG, JPG, JPEG):</label>
+      <input id="sourceFile" type="file" accept=".pdf,.png,.jpg,.jpeg" />
+
+      <label class="input-label" for="rawText">Or paste text:</label>
+      <textarea id="rawText" rows="8" placeholder="Paste chapter notes, article, or any study text..."></textarea>
+      <p id="sourceStatus" class="status">No file processed yet.</p>
+    </section>
+
+    <section class="card">
+      <h2>2) Choose question pattern</h2>
+      <div class="pattern-grid">
+        <label>MCQ count
+          <input id="mcqCount" type="number" min="0" value="2" />
+        </label>
+        <label>SAQ count (short answer)
+          <input id="saqCount" type="number" min="0" value="4" />
+        </label>
+        <label>Long answer count
+          <input id="longCount" type="number" min="0" value="2" />
+        </label>
+        <label>True/False count
+          <input id="tfCount" type="number" min="0" value="2" />
+        </label>
+        <label>Fill in the blanks count
+          <input id="blankCount" type="number" min="0" value="2" />
+        </label>
+      </div>
+      <button id="generateBtn" type="button">Generate Question Pattern</button>
+    </section>
+
+    <section class="card">
+      <h2>Generated Questions (Editable)</h2>
+      <textarea id="output" class="output" rows="16">Your generated question set will appear here.</textarea>
+      <div class="actions">
+        <button id="downloadPdfBtn" type="button">Download as PDF</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
